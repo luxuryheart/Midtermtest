@@ -1,32 +1,13 @@
-คัดลอก private key ไฟลÖ id_rsa ไปไว$ใน ~/.ssh/id_rsa
-ถ$าไม.มี directory ที่ ~/.ssh สามารถทำการสร$างด$วยคำสั่ง mkdir ~/.ssh
-2. เปลี่ยนโหมดไฟลÖ id_rsa เป|น 600 ด$วยคำสั่ง chmod 600 ~/.ssh/id_rsa
-3. ทำการ clone Git repository ของทีมตนเองจาก GitHub ด$วยคำสั่ง เช.น
-git clone git@github.com:sut65/team00.git
-จะเป|นของกลุ.ม G00 แล$วจะได$ directory เช.น team00 โดยจะทำการเปลี่ยน directory ไปที่
-team00 ก.อนที่จะทำงานกับ code
-ด$วยคำสั่ง cd team00
-4. จากนั้นทำการตรวจสอบว.าเราอยู.ที่ main branch ของ Git repository หรือไม.
-ด$วยคำสั่ง git status
-ถ$าไม.ใช.ก็ทำการเปลี่ยน branch ให$เป|น main branch ก.อน
-ด$วนคำสั่ง git checkout main
-5. สร$าง branch ใหม.โดยตั้งต$นจาก main branch ให$เป|นชื่อ issue-<หมายเลข>
-ด$วยคำสั่ง git checkout -b issue-3
-เนื่องจากตัวอย.างเป|นการทำงานเพื่อเขียนโค$ดให$ Issue #3
-6. เขียนโค$ดและเพิ่มหรือลดไฟลÖเข$า repository ด$วยคำสั่ง
-git add <ไฟลÖ> หรือ
-git rm <ไฟลÖ>
-7. ทำการ commit ด$วยข$อความ และลงท$ายด$วย close #<หมายเลข> เช.น
+private key ไฟลÖ id_rsa ไปไว้ใน ~/.ssh/id_rsa ถ้าไม.มี directory ที่ ~/.ssh สามารถทำการสร้างด้วยคำสั่ง mkdir ~/.ssh
+เปลี่ยนโหมดไฟลÖ id_rsa เป|น 600 ด$วยคำสั่ง chmod 600 ~/.ssh/id_rsa
+
+git clone git@github.com:sut65/team00.git --> cd team00
+git status
+git checkout main
+git checkout -b issue-3
+git add or git rm
 git commit -m “ui module equipment - close #3”
-โดยจะเป|นการ commit ลงไปยัง branch ชื่อ issue-3 (ไม.ใช.การ commit ลง main branch)
-8. จากนั้นเป|นการ merge โด$ดจาก branch issue-3 ไปยัง branch main โดนจุดนี้ต$องระวัง เนื่องจาก
-อาจมีเพื่อนในทีมทำการเปลี่ยนโค$ดบน GitHub ไปแล$ว จึงจำเป|นต$อง update โค$ดล.าสุดของเพื่อน
-ลงมาก.อน โดย
-git remote update # ดึงโค$ดลงมาไว$เบื้องหลัง
-git rebase origin/main # ปรับฐาน issue-3 ให$ตรงกับ remote บน GitHub
-(remote ตอนนี้ชื่อ origin/main)
-git checkout main # สลับมา main
-git merge issue-3 –no-ff # ทำการ merge issue-3 เข$าสู. main
-จากนั้น push
-git push origin main
-ถ้า push ไม่ขึ้นอีกให้ทำการ rebase อีกรอ
+git remote update
+git rebase origin/main
+git checkout main
+git merge issue-3 –no-ff
